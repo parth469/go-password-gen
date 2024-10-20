@@ -1,4 +1,4 @@
-module github.com/parth469/password-gen
+module github.com/parth469/password
 
 go 1.23.0
 
