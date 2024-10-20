@@ -9,11 +9,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "password-gen",
+	Use:   "password",
 	Short: "A command-line tool for generating and managing secure passwords",
-	Long: `Password-gen is a versatile and customizable CLI application built in Go, designed to generate secure passwords and manage them.
+	Long: `Password is a customizable CLI application built in Go, designed to generate secure passwords and manage them.
 
 You can specify the following options for password generation and management:
 	
@@ -26,31 +25,33 @@ You can specify the following options for password generation and management:
 
 2) Password management:
    - Save passwords: Use the 'save' option to store passwords for future use, along with additional details such as purpose and creation date.
-   - List passwords: Use the '-h' flag to list all saved passwords, or use the '-a' flag to display all generated passwords, even if unsaved.
-   - Update saved passwords: Use the '-u' flag to update the purpose of a saved password.
-   - Delete passwords: Use the '-d' flag to delete a saved password based on its ID.
+   - List passwords: Use  to list all saved passwords, or use the '-a' flag to display all generated passwords, even if unsaved.
+   - Update saved passwords: Use to update the purpose of a saved password.
+   - Delete passwords: Use  to delete a saved password based on its ID.
 
 ### Example usage:
 1) Generate a password with length 12, including numbers and special characters:
-	password-gen -g -l 12 -d -s 
+	password generate -l 12 -d -s 
 
 2) Generate a bulk of 10 passwords with a custom length of 16:
-	password-gen -g -b 10 -l 16
+	password generate -b 10 -l 16
 
 3) Save a password with a purpose:
-	password-gen save -g -l 12 -d -s --purpose "WiFi password"
+	password save -g -l 12 -d -s --purpose "WiFi password"
 
 4) List all saved passwords:
-	password-gen -h
+	password list
 
 5) Delete a password by ID:
-	password-gen -d <id> 
+	password delete <id> 
+
+5) Update a password by ID:
+	password update <id> 
+
 
 This tool provides flexibility for generating secure passwords with detailed management features for saving, listing, updating, and deleting them.`,
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
@@ -59,13 +60,6 @@ func Execute() {
 }
 
 func init() {
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
 
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.password.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

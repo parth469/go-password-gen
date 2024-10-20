@@ -41,7 +41,7 @@
 1. **Generate a simple password**:
 
    ```bash
-   ./password -g
+   ./password generate
    ```
 
    This generates a password of default length (10 characters).
@@ -49,7 +49,7 @@
 2. **Generate a password with specific length**:
 
    ```bash
-   ./password -g -l 12
+   ./password generate -l 12
    ```
 
    Generates a password of 12 characters.
@@ -57,7 +57,7 @@
 3. **Include numbers and special characters**:
 
    ```bash
-   ./password -g -l 16 -d -s
+   ./password generate -l 16 -d -s
    ```
 
    Generates a 16-character password including numbers and special characters.
@@ -65,14 +65,14 @@
 4. **Generate a password using a custom string**:
 
    ```bash
-   ./password -g -c "abcdef123"
+   ./password generate -c "abcdef123"
    ```
 
    Generates a password using only the characters from the custom string provided.
 
 5. **Bulk password generation**:
    ```bash
-   ./password -g -b 5 -l 10
+   ./password generate -b 5 -l 10
    ```
    Generates 5 passwords, each with a length of 10 characters.
 
@@ -81,7 +81,7 @@
 1. **Save a password with details**:
 
    ```bash
-   ./password save -g -l 12 -d -s --purpose "WiFi Password"
+   ./password save generate -l 12 -d -s --purpose "WiFi Password"
    ```
 
    Generates a password and saves it with a purpose (e.g., WiFi password).
@@ -105,7 +105,7 @@
 4. **Update the purpose of a saved password**:
 
    ```bash
-   ./password -u <id> --purpose "Updated Purpose"
+   ./password updated <id> --purpose "Updated Purpose"
    ```
 
    Updates the purpose of a saved password by using its unique ID.
@@ -118,7 +118,7 @@
 
 ## Command Flags
 
-- `-g, --generate` : Generates a password (default length is 10).
+- `generate` : Generates a password (default length is 10).
 - `-l, --length` : Specify the length of the generated password (e.g., `-l 12` for a 12-character password).
 - `-d, --digits` : Include digits in the generated password.
 - `-s, --special` : Include special characters in the generated password.
@@ -126,45 +126,45 @@
 - `-b, --bulk` : Generate multiple passwords (e.g., `-b 10` to generate 10 passwords).
 - `save` : Saves the generated password with a custom purpose (e.g., for WiFi, bank account, etc.).
 - `-a, --all` : Display all passwords (saved and unsaved).
-- `-h, --list` : List all saved passwords.
-- `-u, --update` : Update the purpose of a saved password using its ID.
-- `-d, --delete` : Delete a saved password using its ID.
+- `list` : List all saved passwords.
+- `update` : Update the purpose of a saved password using its ID.
+- `delete` : Delete a saved password using its ID.
 
 ## Example Commands
 
 1. Generate a 12-character password with numbers and special characters:
 
    ```bash
-   ./password -g -l 12 -d -s
+   ./password generate -l 12 -d -s
    ```
 
 2. Generate and save a password with a purpose:
 
    ```bash
-   ./password save -g -l 16 -d -s --purpose "Email Account"
+   ./password save generate -l 16 -d -s --purpose "Email Account"
    ```
 
 3. Generate 10 passwords with a length of 20 characters:
 
    ```bash
-   ./password -g -b 10 -l 20
+   ./password generate -b 10 -l 20
    ```
 
 4. List all saved passwords:
 
    ```bash
-   ./password -h
+   ./password list
    ```
 
 5. Update the purpose of a saved password:
 
    ```bash
-   ./password -u 1 --purpose "Updated Purpose"
+   ./password update 1 --purpose "Updated Purpose"
    ```
 
 6. Delete a password:
    ```bash
-   ./password -d 1
+   ./password delete 1
    ```
 
 ## Contributing
