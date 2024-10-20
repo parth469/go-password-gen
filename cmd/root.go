@@ -6,6 +6,10 @@ package cmd
 import (
 	"os"
 
+	deleteCmd "github.com/parth469/password/cmd/delete"
+	generateCmd "github.com/parth469/password/cmd/generate"
+	listCmd "github.com/parth469/password/cmd/list"
+	updateCmd "github.com/parth469/password/cmd/update"
 	"github.com/spf13/cobra"
 )
 
@@ -60,6 +64,13 @@ func Execute() {
 }
 
 func init() {
-
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	addSubCommond()
+}
+
+func addSubCommond() {
+	rootCmd.AddCommand(listCmd.List)
+	rootCmd.AddCommand(updateCmd.Update)
+	rootCmd.AddCommand(deleteCmd.Delete)
+	rootCmd.AddCommand(generateCmd.Generate)
 }
